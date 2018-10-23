@@ -8,7 +8,7 @@ void lclip(float [][3],int);
 void rclip(float[][3],int);
 void bclip(float[][3],int);
 void tclip(float[][3],int);
-float xmin,ymin,xmax,ymax;
+float xmin=100,ymin=100,xmax=200,ymax=200;
 
 void drawpolygon(float a[100][3],int n)
 {
@@ -19,7 +19,7 @@ int i;
 	}
 }
 
-void lclip(float a[100][3],int n)
+void lclip(float a[100][3],int n)//Left Clipping
 {
 int i,k=0;
 float p[100][3];
@@ -58,7 +58,7 @@ printf("after left %f %f",p[i][0],p[i][1]);
   a[k][1]=p[0][1];
 
   rectangle(xmin,ymin,xmax,ymax);
-printf(" %f %f",a[k][0],a[k][1]);
+//printf(" %f %f",a[k][0],a[k][1]);
 setcolor(2);
 outtextxy(100,250,"Left Clipping");
 drawpolygon(a,k);
@@ -68,7 +68,7 @@ getch();
 cleardevice();
 rclip(a,k);
 }
-void rclip(float a[100][3],int n)
+void rclip(float a[100][3],int n)//Right Clipping
 {
 int i,k=0;
 float p[100][3];
@@ -118,7 +118,7 @@ clrscr();
 bclip(a,k);
 
 }
-void bclip(float a[100][3],int n)
+void bclip(float a[100][3],int n)//Bottom Clipping
 {
 int i,k=0;
 float p[100][3];
@@ -170,7 +170,7 @@ cleardevice();
 tclip(a,k);
 }
 
-void tclip(float a[100][3],int n)
+void tclip(float a[100][3],int n)//Top Clipping
 {
 int i,k=0;
 float p[100][3];
@@ -219,16 +219,17 @@ getch();
 }
 void main()
 {
-	    int n,gd=DETECT,gm,j;
-	    float m,a[100][3];
-	 
+	    int n=3,gd=DETECT,gm,j;
+	    float m;
+	//float a[100][3];
+	  float a[100][3]={{50,220},{220,220},{130,70},{50,220}};
           int i,x,y;
 	    clrscr();  
 	    initgraph(&gd,&gm,"c:\\turboc3\\bgi");
-   printf("Enter  clipping window:\n");
-    scanf("%d%d%d%d",&xmin,&ymin,&xmax,&ymax);
+   //printf("Enter  clipping window:\n");
+   // scanf("%f%f%f%f",&xmin,&ymin,&xmax,&ymax);
 
-	    printf("Enter no of edges\n");
+	/*    printf("Enter no of edges\n");
 
 	    scanf("%d",&n);
 printf("enter polygon coordinate");
@@ -239,7 +240,7 @@ scanf("%f%f",&a[i][0],&a[i][1]);
 
 }                                 
 	     for(i=0;i<n;i++)
-printf("values are  %f %f",a[i][0],a[i][1]);
+printf("values are  %f %f",a[i][0],a[i][1]);*/
 	      rectangle(xmin,ymin,xmax,ymax);
 	    drawpolygon(a,n);
 	    getch();
